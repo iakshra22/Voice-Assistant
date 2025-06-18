@@ -122,6 +122,10 @@ def takeCommand():
             speak("Setting brightness to low")
             pyautogui.press("brightness down", presses=100)
             return query  
+        
+        elif "Hello" in query:
+            speak ("hello maam")
+            return query
 
 
     except Exception:
