@@ -65,19 +65,9 @@ def takeCommand():
             webbrowser.open("https://openai.com/index/chatgpt/")
 
             return query
-        elif "contact keshav" in query:
-            speak("Contacting keshav on WhatsApp")
-            webbrowser.open("https://wa.me/9463694623")
-            return query
         
-        elif "contact ujjwal bhaiya" in query:
-            speak("Contacting ujjwal bhaiya on WhatsApp")
-            webbrowser.open("https://wa.me/8264561611")
-            return query
         
-        elif 'whatsapp' in query:
-            query=query.replace('whatsapp','')
-            os.system(f'start https://wa.me/{919416094060}?text={query.replace(" ","%20")}')
+       
             
         elif "wikipedia" in query:
             speak("Searching Wikipedia...")
