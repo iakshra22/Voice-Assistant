@@ -48,18 +48,18 @@ def takeCommand():
         if "open google" in query:
             speak("Opening Google")
             webbrowser.open("https://www.google.com")
-            return query
+
         elif "open youtube" in query:
             speak("Opening Youtube")
             webbrowser.open("https://www.youtube.com")
-            return query
+
         elif "open instagram" in query:
             speak("Opening Instagram")
             webbrowser.open("https://www.instagram.com")
+
         elif "open gpt" in query:
             speak("Opening ChatGPT")
             webbrowser.open("https://openai.com/index/chatgpt/")
-            return query
 
         elif "wikipedia" in query:
             speak("Searching Wikipedia...")
@@ -68,46 +68,53 @@ def takeCommand():
             speak("According to Wikipedia")
             print(results)
             speak(results)
-            return query
 
         elif "volume up" in query:
             speak("Increasing volume")
             pyautogui.press("volumeup")
-            return query
 
         elif "volume down" in query:
             speak("Decreasing volume")
             pyautogui.press("volumedown")
-            return query
 
         elif "mute" in query:
             speak("Muting volume")
             pyautogui.press("volumemute")
-            return query
 
         elif "unmute" in query:
             speak("Unmuting volume")
             pyautogui.press("volumemute")
-            return query
 
         elif "volume full" in query:
             speak("Setting volume to full")
             pyautogui.press("volumeup", presses=100)
-            return query
 
         elif "brightness full" in query:
             speak("Setting brightness to full")
             pyautogui.press("brightness up", presses=100)
-            return query
 
         elif "brightness low" in query:
             speak("Setting brightness to low")
             pyautogui.press("brightness down", presses=100)
-            return query
 
         elif "hello" in query:
-            speak("Hello ma'am")
-            return query
+            responses = [
+                "Hello ma'am, how can I assist you?",
+                "Hi! I'm here for you.",
+                "Hey! What would you like me to do?",
+                "Hello again, ready when you are!",
+                "Nice to hear you!"
+            ]
+            speak(random.choice(responses))
+
+        elif "tell me a joke" in query:
+            joke = pyjokes.get_joke()
+            speak("Here's a joke for you.")
+            speak(joke)
+
+        elif "what time is it" in query or "current time" in query:
+            now = datetime.datetime.now().strftime("%I:%M %p")
+            speak(f"The time is {now}")
 
     except Exception:
         speak("I'm still here. Take your time and say that again.")
