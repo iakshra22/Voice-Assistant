@@ -8,12 +8,10 @@ import pyjokes
 import pyautogui
 import os
 
-
-engine=pyttsx3.init()
-voice=engine.getProperty('voices')
-engine.setProperty('voice', voice[1].id)  
-engine.setProperty('rate', 150)  
-
+engine = pyttsx3.init()
+voice = engine.getProperty('voices')
+engine.setProperty('voice', voice[1].id)
+engine.setProperty('rate', 150)
 
 
 def speak(audio):
@@ -21,25 +19,23 @@ def speak(audio):
     engine.runAndWait()
 
 
-
-
 def wishme():
-    hour=int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
+    hour = int(datetime.datetime.now().hour)
+    if hour >= 0 and hour < 12:
         speak("Good Morning!")
-    elif hour>=12 and hour<16:
+    elif hour >= 12 and hour < 16:
         speak("Good Afternoon!")
     else:
-        speak("Good Evening!")     
-    speak("hey there , i am voice assistant made by Akshra") 
-    speak ("tell me what happened ?") 
+        speak("Good Evening!")
+    speak("Hey there, I am a voice assistant made by Akshra")
+    speak("Tell me what happened?")
 
 wishme()
 
 
 def takeCommand():
     global query
-    r=sr.Recognizer()
+    r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
         r.pause_threshold = 1
@@ -61,14 +57,10 @@ def takeCommand():
             speak("Opening Instagram")
             webbrowser.open("https://www.instagram.com")
         elif "open gpt" in query:
-            speak("Opening chatgpt")
+            speak("Opening ChatGPT")
             webbrowser.open("https://openai.com/index/chatgpt/")
-
             return query
-        
-        
-       
-            
+
         elif "wikipedia" in query:
             speak("Searching Wikipedia...")
             query = query.replace("wikipedia", "")
@@ -76,9 +68,9 @@ def takeCommand():
             speak("According to Wikipedia")
             print(results)
             speak(results)
-            return query  
+            return query
 
-        elif "volume up" in query:   
+        elif "volume up" in query:
             speak("Increasing volume")
             pyautogui.press("volumeup")
             return query
@@ -101,34 +93,28 @@ def takeCommand():
         elif "volume full" in query:
             speak("Setting volume to full")
             pyautogui.press("volumeup", presses=100)
-            return query    
-        
+            return query
+
         elif "brightness full" in query:
             speak("Setting brightness to full")
             pyautogui.press("brightness up", presses=100)
-            return query  
-        
+            return query
+
         elif "brightness low" in query:
             speak("Setting brightness to low")
             pyautogui.press("brightness down", presses=100)
-            return query  
-        
-        elif "Hello" in query:
-            speak ("hello maam")
             return query
 
+        elif "hello" in query:
+            speak("Hello ma'am")
+            return query
 
     except Exception:
-        speak("Sorry, I did not understand that. Please say it again.")
-        return "None"        
-
-
-
-
+        speak("I'm still here. Take your time and say that again.")
+        return "None"
 
 
 def bolore():
     takeCommand()
-
 
 bolore()
