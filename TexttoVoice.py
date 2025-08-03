@@ -8,93 +8,95 @@ import pyjokes
 import pyautogui
 import os
 
+# Initialize TTS engine
 engine = pyttsx3.init()
 voice = engine.getProperty('voices')
 engine.setProperty('voice', voice[1].id)
 engine.setProperty('rate', 150)
 
-
-def speak(audio):
-    engine.say(audio)
+# Function to make the assistant speak
+def speak(text):
+    engine.say(text)
     engine.runAndWait()
 
-
+# Function to wish user according to time
 def wishme():
     hour = int(datetime.datetime.now().hour)
-    if hour >= 0 and hour < 12:
+    if 0 <= hour < 12:
         speak("Good Morning!")
-    elif hour >= 12 and hour < 16:
+    elif 12 <= hour < 16:
         speak("Good Afternoon!")
     else:
         speak("Good Evening!")
-    speak("Hey there, I am a voice assistant made by Akshra")
-    speak("Tell me what happened?")
+    speak("Hey there! I’m your voice assistant created by Akshra.")
+    speak("So, what can I help you with today?")
 
 wishme()
 
-
+# Function to take user's voice input
 def takeCommand():
     global query
-    r = sr.Recognizer()
+    recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
+        recognizer.pause_threshold = 1
+        audio = recognizer.listen(source)
+
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in').lower()
+        query = recognizer.recognize_google(audio, language='en-in').lower()
         print(f"User said: {query}\n")
 
         if "open google" in query:
-            speak("Opening Google")
+            speak("Opening Google now.")
             webbrowser.open("https://www.google.com")
 
         elif "open youtube" in query:
-            speak("Opening Youtube")
+            speak("Opening YouTube for you.")
             webbrowser.open("https://www.youtube.com")
 
         elif "open instagram" in query:
-            speak("Opening Instagram")
+            speak("Taking you to Instagram.")
             webbrowser.open("https://www.instagram.com")
 
         elif "open gpt" in query:
-            speak("Opening ChatGPT")
+            speak("Launching ChatGPT.")
             webbrowser.open("https://openai.com/index/chatgpt/")
 
         elif "wikipedia" in query:
-            speak("Searching Wikipedia...")
+            speak("Let me search that on Wikipedia.")
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query, sentences=4)
-            speak("According to Wikipedia")
+            speak("According to Wikipedia...")
             print(results)
             speak(results)
 
         elif "volume up" in query:
-            speak("Increasing volume")
+            speak("Increasing the volume.")
             pyautogui.press("volumeup")
 
         elif "volume down" in query:
-            speak("Decreasing volume")
+            speak("Decreasing the volume.")
             pyautogui.press("volumedown")
 
         elif "mute" in query:
-            speak("Muting volume")
+            speak("Muting the volume.")
             pyautogui.press("volumemute")
 
         elif "unmute" in query:
-            speak("Unmuting volume")
+            speak("Unmuting the volume.")
             pyautogui.press("volumemute")
 
         elif "volume full" in query:
-            speak("Setting volume to full")
+            speak("Maximizing the volume.")
             pyautogui.press("volumeup", presses=100)
 
         elif "brightness full" in query:
-            speak("Setting brightness to full")
+            speak("Turning brightness to full.")
             pyautogui.press("brightness up", presses=100)
 
         elif "brightness low" in query:
-            speak("Setting brightness to low")
+            speak("Dimming the screen.")
             pyautogui.press("brightness down", presses=100)
 
         elif "hello" in query:
@@ -109,7 +111,7 @@ def takeCommand():
 
         elif "tell me a joke" in query:
             joke = pyjokes.get_joke()
-            speak("Here's a joke for you.")
+            speak("Here's a light joke for you.")
             speak(joke)
 
         elif "what time is it" in query or "current time" in query:
@@ -117,10 +119,10 @@ def takeCommand():
             speak(f"The time is {now}")
 
     except Exception:
-        speak("I'm still here. Take your time and say that again.")
+        speak("I’m still here... just say that again slowly.")
         return "None"
 
-
+# Run the assistant once
 def bolore():
     takeCommand()
 
