@@ -28,7 +28,7 @@ It can interact with you using your microphone, respond using text-to-speech, an
   - `pyautogui` – simulate keyboard keys (volume, brightness)
   - `pyjokes` – generate random jokes
   - `datetime` – time-based greetings and clock
-  - `webbrowser` – open web pages
+  - `webbrowser` – open web pages 
 
 ---
 
