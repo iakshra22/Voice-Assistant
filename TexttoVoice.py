@@ -7,7 +7,7 @@ import wikipedia
 import pyjokes
 import pyautogui
 import os
-
+ 
 # Initialize TTS engine
 engine = pyttsx3.init()
 voice = engine.getProperty('voices')
