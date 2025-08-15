@@ -8,7 +8,7 @@ It can interact with you using your microphone, respond using text-to-speech, an
 ## 💡 Features
 
 - 🎧 **Voice-controlled interface**
-- 🔍 Search on **Wikipedia**
+- 🔍 Search on **Wikipedia** 
 - 🌐 Open websites like **Google**, **YouTube**, **Instagram**, and **ChatGPT**
 - 🔊 Adjust system **volume** (up, down, mute, unmute, full)
 - 💡 Adjust **brightness** (if supported by OS/hardware)
