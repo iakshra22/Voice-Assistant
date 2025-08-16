@@ -1,4 +1,4 @@
-# 🎙️ Python Voice Assistant by Akshra
+# 🎙️ Voice Assistant in Python
 
 Welcome to your very own **Voice-Controlled AI Assistant**, built using Python!  
 It can interact with you using your microphone, respond using text-to-speech, and carry out useful commands like searching the web, adjusting volume, telling jokes, and more.
