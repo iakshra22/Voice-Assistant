@@ -4,7 +4,7 @@ import speech_recognition as sr
 import webbrowser
 import random
 import wikipedia
-import pyjokes 
+import pyjokes
 import pyautogui
 import os
  
