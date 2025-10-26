@@ -8,18 +8,15 @@ import pyjokes
 import pyautogui
 import os
  
-# Initialize TTS engine
 engine = pyttsx3.init()
 voice = engine.getProperty('voices')
 engine.setProperty('voice', voice[1].id)
 engine.setProperty('rate', 150)
 
-# Function to make the assistant speak
 def speak(text):
     engine.say(text)
     engine.runAndWait()
 
-# Function to wish user according to time
 def wishme():
     hour = int(datetime.datetime.now().hour)
     if 0 <= hour < 12:
@@ -33,7 +30,6 @@ def wishme():
 
 wishme()
 
-# Function to take user's voice input
 def takeCommand():
     global query
     recognizer = sr.Recognizer()
@@ -122,7 +118,6 @@ def takeCommand():
         speak("I’m still here... just say that again slowly.")
         return "None"
 
-# Run the assistant once
 def bolore():
     takeCommand()
 
